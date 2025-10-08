@@ -4,6 +4,7 @@ import About from "../components/About";
 import Footer from "../components/Footer";
 import Header from "../components/Header";
 import Project from "../components/Body"
+import Data from "../components/Data"
 
 const Home: NextPage = () => {
   return (
@@ -33,6 +34,7 @@ const Home: NextPage = () => {
         {/* About */}
         <About />
         <Project/>
+        <Data/>
       </main>
 
       {/* Footer */}
