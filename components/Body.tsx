@@ -29,7 +29,7 @@ import "bootstrap/dist/css/bootstrap.min.css";
 export default function ProjectCard() {
   return (
     <>
-        <Card style={{ width: "30rem" }}>
+        {/* <Card style={{ width: "30rem" }}>
             <Card.Img variant="top" src="https://via.placeholder.com/150" />
             <Card.Body>
                 <Card.Title>Project 1</Card.Title>
@@ -48,7 +48,7 @@ export default function ProjectCard() {
                 </Card.Text>
                 <Button variant="primary">View Project</Button>
             </Card.Body>
-        </Card>
+        </Card> */}
     </>
 
     

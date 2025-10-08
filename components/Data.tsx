@@ -1,7 +1,9 @@
 "use client"
 import { useEffect, useState } from "react"
 import { supabase } from "./supabaseClient"
-
+import { Container,Card, Button ,Row,Col} from "react-bootstrap";
+import React from "react";
+import "bootstrap/dist/css/bootstrap.min.css";
 type Project = {
   id: number
   name: string
@@ -30,14 +32,48 @@ export default function ProjectsList() {
   if (projects.length === 0) return <p>กำลังโหลดข้อมูล...</p>
 
   return (
-    <div className="grid grid-cols-1 md:grid-cols-3 gap-6 p-6">
-      {projects.map((p) => (
-        <div key={p.id} className="border rounded-xl shadow p-4 bg-white">
-          <img src={p.image} alt={p.name} className="rounded-lg mb-3 w-full h-40 object-cover" />
-          <h2 className="font-semibold text-lg">{p.name}</h2>
-          <p className="text-gray-600 text-sm">{p.description}</p>
-        </div>
-      ))}
-    </div>
+    // <div className="grid grid-cols-1 md:grid-cols-3 gap-6 p-6">
+    //   {projects.map((p) => (
+    //     <div key={p.id} className="border rounded-xl shadow p-4 bg-white">
+    //       <img src={p.image} alt={p.name} className="rounded-lg mb-3 w-full h-40 object-cover" />
+    //       <h2 className="font-semibold text-lg">{p.name}</h2>
+    //       <p className="text-gray-600 text-sm">{p.description}</p>
+    //     </div>
+    //   ))}
+    // </div>
+
+    <Container className="dark-bg">
+    <Row className="g-4" style={{ backgroundColor: "#25262A" }}>
+        {projects.map((p) => (
+        <Col md={3} key={p.id} style={{ backgroundColor: "#25262A" }}>
+            <Card className="h-100 d-flex flex-column shadow-sm " style={{ backgroundColor: "#555659" }}>
+            <Card.Img
+                variant="top"
+                src={p.image}
+                className="img-fluid"
+                style={{
+                height: "200px",
+                objectFit: "contain",
+                backgroundColor: "#555659",
+                padding: "10px",
+                }}
+            />
+            <Card.Body className="d-flex flex-column"style={{ backgroundColor: "#555659" }}>
+                <Card.Title className="fw-bold" style={{color: "#FFFFFF"}}>{p.name}</Card.Title>
+                <Card.Text className="flex-grow-1" style={{color: "#FFFFFF"}}>{p.description}</Card.Text>
+                <Button variant="primary" className="mt-auto align-self-start" style={{ backgroundColor: "#4dba87" }}>
+                View Project
+                </Button>
+            </Card.Body>
+            </Card>
+        </Col>
+        ))}
+    </Row>
+    </Container>
+
+
+
+
+
   )
 }
