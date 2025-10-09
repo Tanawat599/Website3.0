@@ -2,6 +2,7 @@ import React from "react";
 import Image, { StaticImageData } from "next/image";
 
 export default function About() {
+
     return (
         <section id="about" className="dark-bg">
             <div className="flex">
@@ -9,23 +10,23 @@ export default function About() {
                     <AboutCard
                         title="Iot Project"
                         icon="/images/iot.png"
-                        description="I create design  products with unique ideas."
-                        projects={7} />
+                        description=""
+                        projects={5} />
                     <AboutCard
                         title="Robotic"
                         icon="/images/robotic-arm.png"
-                        description="I develop Front-End with coding super smooth."
-                        projects={10} />
+                        description=""
+                        projects={2} />
                     <AboutCard
                         title="AI and Computer Vision"
                         icon="/icons/learning.png"
-                        description="I develop cross-platform mobile applications."
-                        projects={7} />
+                        description=""
+                        projects={2} />
                     <AboutCard
                         title="Application and Game"
                         icon="/icons/personal-computer.png"
-                        description="I develop cross-platform mobile applications."
-                        projects={7} />
+                        description=""
+                        projects={1} />
                 </div>
                 <div className="flex-full about-text">
                     <h5 className="gray">Introduce</h5>

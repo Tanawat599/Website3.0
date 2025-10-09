@@ -7,6 +7,7 @@ import Project from "../components/Body"
 import Data from "../components/Data"
 
 const Home: NextPage = () => {
+
   return (
     <div>
     {/* <div style={{ backgroundColor: "#25262A" }}>. */}
@@ -32,7 +33,6 @@ const Home: NextPage = () => {
       <Header />
 
       <main >
-        {/* About */}
         <About />
         <Data/>
         {/* <Project/> */}
