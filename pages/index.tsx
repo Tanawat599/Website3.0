@@ -8,7 +8,8 @@ import Data from "../components/Data"
 
 const Home: NextPage = () => {
   return (
-    <>
+    <div>
+    {/* <div style={{ backgroundColor: "#25262A" }}>. */}
       <Head>
         <title>Blaiti - Frontend Developer</title>
         <link rel="icon" href="/favicon.ico" />
@@ -30,16 +31,16 @@ const Home: NextPage = () => {
       {/* Header */}
       <Header />
 
-      <main>
+      <main >
         {/* About */}
         <About />
-        <Project/>
         <Data/>
+        {/* <Project/> */}
       </main>
 
       {/* Footer */}
       <Footer />
-    </>
+    </div>
   )
 }
 
