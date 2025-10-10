@@ -200,6 +200,17 @@ button {
   transform: translateY(10px);
   transition: 100ms;
 }
+.responsive-padding {
+  padding-left: 0%;
+  padding-right: 0%;
+}
+
+@media (max-width: 768px) {
+  .responsive-padding {
+    padding-left: 5%;
+    padding-right: 5%;
+  }
+}
 
 
 /* --------- Responsive Design --------- */

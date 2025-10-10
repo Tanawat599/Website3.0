@@ -3,13 +3,12 @@ import Head from "next/head";
 import About from "../components/About";
 import Footer from "../components/Footer";
 import Header from "../components/Header";
-import Project from "../components/Body"
 import Data from "../components/Data"
 
 const Home: NextPage = () => {
 
   return (
-    <div>
+    <div style={{backgroundColor: "#555659"}} className="responsive-padding">
     {/* <div style={{ backgroundColor: "#25262A" }}>. */}
       <Head>
         <title>Kidinventor</title>

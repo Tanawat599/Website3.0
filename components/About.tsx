@@ -52,7 +52,7 @@ export default function About() {
                         icon="/icons/personal-computer.png"
                         description={
                             <div>
-                                <img src="/icons/web.png" style={{ width: "20%", height: "auto" }}/>
+                                <img src="/icons/web.png" style={{ width: "30%", height: "auto" ,marginTop: "-4%"}}/>
                                 <img src="/icons/app.png" style={{ width: "15%", height: "auto" }}/>
                                 <img src='/icons/roblox.png' style={{ width: "10%", height: "auto" }}></img>
                             </div>
@@ -90,7 +90,7 @@ function AboutCard ({title, icon, description, projects} : Props) {
                 <h3 className="green">{title}</h3>
                 <Image src={icon} width={36} height={36} alt={title} />
             </div>
-            <p className="white">{description}</p>
+            <div className="white">{description}</div>
             <span className="gray">{projects.toString()} projects</span>
         </div>
     )
