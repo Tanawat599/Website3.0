@@ -60,7 +60,7 @@ export default function About() {
                         projects={1} />
                 </div>
                 <div className="flex-full about-text">
-                    <img src="/images/edu.png" alt="wallety" style={{ width: "50%", height: "auto" ,marginLeft:'10%'}} />
+                    <img src="https://jwlblqgkhpxztiswqahj.supabase.co/storage/v1/object/public/project-images/Edu.png" alt="wallety" style={{ width: "50%", height: "auto" ,marginLeft:'10%'}} />
                 </div>
             </div>
 
