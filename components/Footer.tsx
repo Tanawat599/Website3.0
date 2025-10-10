@@ -6,7 +6,7 @@ export default function Footer() {
     const year = new Date().getFullYear();
 
     return (
-        <footer className="light-bg flex justify-space" id='contact'>
+        <footer className="dark-bg flex justify-space" id='contact'>
             <span className="white">Copyright © {year} <Link href="/">Kidinventor</Link> - All rights reserved.</span>
             <ul className="flex">
                 <li>

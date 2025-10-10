@@ -8,30 +8,41 @@ export default function NavBar() {
     return (
 
         <>
-          <Navbar 
-            bg="light" 
-            data-bs-theme="light" 
+          <Navbar
+            bg="light"
+            expand="lg"
             style={{
               position: "fixed",
               top: 0,
+              left: 0,
               width: "100%",
               zIndex: 1000,
-              backgroundColor: "rgba(255, 255, 255, 0.5)", // สีขาวโปร่งใส
-              backdropFilter: "blur(100px)", // ทำเบลอพื้นหลัง
-              WebkitBackdropFilter: "blur(10px)", // สำหรับ Safari
+              backgroundColor: "rgba(255, 255, 255, 0.5)",
+              backdropFilter: "blur(10px)",
+              WebkitBackdropFilter: "blur(10px)",
             }}
           >
-            <Container>
-              <Navbar.Brand href="#home" style={{fontWeight: '600'}}>Kidinventor</Navbar.Brand>
-              <Nav style={{fontWeight: '600'}}>
-                <Nav.Link href="/">Home</Nav.Link>
-                <Nav.Link href="#about" >About</Nav.Link>
-                <Nav.Link href="#myproject">Project</Nav.Link>
-                <Nav.Link href="#certificates">Certificates</Nav.Link>
-                <Nav.Link href="#contact">Contact</Nav.Link>
-              </Nav>
+            <Container fluid>
+              <Navbar.Brand href="#home" style={{ fontWeight: "600" , marginLeft:'5%'}}>
+                Kidinventor
+              </Navbar.Brand>
+
+              {/* ปุ่ม toggle สำหรับจอเล็ก */}
+              <Navbar.Toggle aria-controls="navbar-nav" />
+
+              {/* ส่วนเมนู */}
+              <Navbar.Collapse id="navbar-nav">
+                <Nav className="ms-auto" style={{ fontWeight: "300", marginRight:'5%'}} >
+                  <Nav.Link href="/">Home</Nav.Link>
+                  <Nav.Link href="#about">About</Nav.Link>
+                  <Nav.Link href="#myproject">Project</Nav.Link>
+                  <Nav.Link href="#certificates">Certificates</Nav.Link>
+                  <Nav.Link href="#contact">Contact</Nav.Link>
+                </Nav>
+              </Navbar.Collapse>
             </Container>
           </Navbar>
+
 
         </>
     )

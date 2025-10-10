@@ -5,35 +5,62 @@ export default function About() {
 
     return (
         <section id="about" className="dark-bg">
+            <div
+                className="tag-head"
+                style={{ textAlign: "center", marginBottom: "2%", color: "white" ,fontWeight:'300'}}
+                id='about'
+            >
+                About Me
+            </div>
             <div className="flex">
                 <div className="flex-full">
                     <AboutCard
-                        title="Iot Project"
+                        title="Iot and Microcontroller"
                         icon="/images/iot.png"
-                        description=""
+                        description={
+                            <div>
+                                <img src="/icons/esp32.jpeg" style={{ width: "8%", height: "auto" }}/>
+                                <img src='/icons/arduinoCloud.png' style={{ width: "8%", height: "auto" }}></img>
+                                <img src='/icons/mqtt.png' style={{ width: "8%", height: "auto" }}></img>
+                                <img src='/icons/arduino.png' style={{ width: "8%", height: "auto" }}></img>
+                            </div>
+                        }
                         projects={5} />
                     <AboutCard
                         title="Robotic"
                         icon="/images/robotic-arm.png"
-                        description=""
+                        description={
+                            <div>
+                                <img src="/icons/stm32.png" style={{ width: "8%", height: "auto" ,marginRight:'2%'}}/>
+                                <img src='/icons/ros.png' style={{ width: "10%", height: "auto" }}></img>
+                                <img src='/icons/rasp.png' style={{ width: "10%", height: "auto" }}></img>
+                            </div>
+                        }
                         projects={2} />
                     <AboutCard
                         title="AI and Computer Vision"
                         icon="/icons/learning.png"
-                        description=""
+                        description={
+                            <div>
+                                <img src="/icons/yolo.png" style={{ width: "10%", height: "auto" }}/>
+                                <img src='/icons/opencv.png' style={{ width: "10%", height: "auto" }}></img>
+                            </div>
+                        }
                         projects={2} />
                     <AboutCard
                         title="Application and Game"
                         icon="/icons/personal-computer.png"
-                        description=""
+                        description={
+                            <div>
+                                <img src="/icons/web.png" style={{ width: "20%", height: "auto" }}/>
+                                <img src="/icons/app.png" style={{ width: "15%", height: "auto" }}/>
+                                <img src='/icons/roblox.png' style={{ width: "10%", height: "auto" }}></img>
+                            </div>
+                        }
                         projects={1} />
                 </div>
                 <div className="flex-full about-text">
-                    <h5 className="gray">Introduce</h5>
-                    <h1 className="white">Hello, I&#39;m Tanawat Chuthaphiromporn</h1>
-                    <h3 className="white">Design is not just what it looks like. Design is how it works!</h3>
-                    <p className="gray">I am a Computer Engineering student passionate about using technology to improve daily life. 
-                        I enjoy creating practical solutions through AI, IoT, and software development. With strong communication and teamwork skills, I thrive in collaborative environments and am eager to keep learning and innovating.</p>
+                    <img src="/images/edu.png" alt="wallety" style={{ width: "50%", height: "auto" ,marginLeft:'10%'}} />
                 </div>
             </div>
 
@@ -51,13 +78,14 @@ export default function About() {
 type Props = {
     title: string,
     icon: string | StaticImageData,
-    description: string,
+    description: React.ReactNode,
     projects: number
 }
 
 function AboutCard ({title, icon, description, projects} : Props) {
     return(
         <div className="light-bg about-card">
+
             <div className="flex justify-space">
                 <h3 className="green">{title}</h3>
                 <Image src={icon} width={36} height={36} alt={title} />
