@@ -1,11 +1,14 @@
 "use client";
-import React, { useEffect, useState } from "react";
-import { supabase } from "./supabaseClient";
-import { Container, Card, Button, Row, Col } from "react-bootstrap";
+import React, { useEffect, useState, useRef } from "react";
+import gsap from 'gsap';
+import { ScrollTrigger } from 'gsap/dist/ScrollTrigger';
+
+import { Container, Row, Col } from "react-bootstrap";
 import "bootstrap/dist/css/bootstrap.min.css";
 import Link from "next/link";
 
-// type ของข้อมูล
+gsap.registerPlugin(ScrollTrigger);
+
 type Item = {
   id: number;
   name: string;
@@ -14,97 +17,122 @@ type Item = {
   moreinfo: string;
 };
 
-// Component หลัก
+
 export default function ProjectsAndCertificates() {
   const [projects, setProjects] = useState<Item[]>([]);
   const [certificates, setCertificates] = useState<Item[]>([]);
-  const [showAll, setShowAll] = useState(false); // ✅ state สำหรับแสดงทั้งหมด
+  const [showAll, setShowAll] = useState(false);
+  const projectsRef = useRef<HTMLDivElement>(null);
+  const certificatesRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     fetchProjects();
     fetchCertificates();
   }, []);
 
-  // ดึงข้อมูลจาก table "project"
-  async function fetchProjects() {
-    const { data, error } = await supabase
-      .from("project")
-      .select("*")
-      .order("id", { ascending: true });
-    if (error) console.error("❌ Error fetching projects:", error);
-    else setProjects(data);
-  }
+  useEffect(() => {
+    // Animate projects when they load
+    if (projects.length > 0 && projectsRef.current) {
+      const cards = projectsRef.current.querySelectorAll(".project-card-animated");
+      gsap.set(cards, { opacity: 1, y: 0 }); // Ensure visible first
 
-  // ดึงข้อมูลจาก table "certificate"
-  async function fetchCertificates() {
-    const { data, error } = await supabase
-      .from("certificate")
-      .select("*")
-      .order("id", { ascending: true });
-    if (error) console.error("❌ Error fetching certificates:", error);
-    else setCertificates(data);
-  }
-
-  // ✅ ฟังก์ชัน toggle แสดงโปรเจกต์ทั้งหมด
-  const handleShowMore = () => {
-    if (showAll) {
-      setShowAll(false); // ถ้ากำลังแสดงทั้งหมด → กลับไปแสดงแค่ 8
-    } else {
-      setShowAll(true); // ถ้ายังไม่แสดงทั้งหมด → แสดงทั้งหมด
+      gsap.fromTo(cards,
+        { y: 40, opacity: 0 },
+        {
+          y: 0,
+          opacity: 1,
+          duration: 0.5,
+          stagger: 0.08,
+          ease: "power2.out",
+          delay: 0.1
+        }
+      );
     }
+  }, [projects]);
+
+  useEffect(() => {
+    // Animate certificates when they load
+    if (certificates.length > 0 && certificatesRef.current) {
+      const cards = certificatesRef.current.querySelectorAll(".certificate-card-animated");
+      gsap.set(cards, { opacity: 1, y: 0 }); // Ensure visible first
+
+      gsap.fromTo(cards,
+        { y: 40, opacity: 0 },
+        {
+          y: 0,
+          opacity: 1,
+          duration: 0.5,
+          stagger: 0.08,
+          ease: "power2.out",
+          delay: 0.1
+        }
+      );
+    }
+  }, [certificates]);
+
+
+  async function fetchProjects() {
+    try {
+      const res = await fetch('/api/projects');
+      if (!res.ok) throw new Error('Failed to fetch projects');
+      const data = await res.json();
+      setProjects(data);
+    } catch (error) {
+      console.error("❌ Error fetching projects:", error);
+    }
+  }
+
+
+  async function fetchCertificates() {
+    try {
+      const res = await fetch('/api/certificates');
+      if (!res.ok) throw new Error('Failed to fetch certificates');
+      const data = await res.json();
+      setCertificates(data);
+    } catch (error) {
+      console.error("❌ Error fetching certificates:", error);
+    }
+  }
+
+
+  const handleShowMore = () => {
+    setShowAll(!showAll);
   };
 
-  // ฟังก์ชันแสดง Card (ใช้ซ้ำได้)
-  const renderCards = (items: Item[], isProject = false) => {
-    // ถ้าเป็น project และ showAll = false → แสดงเฉพาะ 8 อัน
+
+  const renderCards = (items: Item[], isProject = false, animationClass: string) => {
+
     const visibleItems = isProject && !showAll ? items.slice(0, 8) : items;
 
     return (
-      <Container className="light-bg">
-        <Row className="g-4" style={{ backgroundColor: "#555659" }}>
-          {visibleItems.map((p) => (
-            <Col md={3} key={p.id} style={{ backgroundColor: "#555659" }}>
-              <Card
-                className="h-100 d-flex flex-column "
-                style={{ backgroundColor: "#555659"}}
-              >
-
-                <Card.Body
-                  className="d-flex flex-column"
-                  style={{ backgroundColor: "#25262A" ,borderTopLeftRadius: "20px", borderTopRightRadius: "20px", borderBottomRightRadius: "20px", borderBottomLeftRadius: "20px" }}
-                >
-                    <Card.Img
-                        variant="top"
-                        src={p.image}
-                        className="img-fluid"
-                        style={{
-                            height: "200px",
-                            objectFit: "contain",
-                            backgroundColor: "#25262A",
-                            padding: "10px"
-                        }}
-                    />
-                    <Card.Title
-                        className="fw-bold"
-                        style={{ color: "#FFFFFF" }}
-                    >
-                        {p.name}
-                    </Card.Title>
-                    <Card.Text
-                        className="flex-grow-1"
-                        style={{ color: "#FFFFFF", fontWeight: "300" }}
-                    >
-                        {p.description}
-                    </Card.Text>
-                    {p.moreinfo !== "None" ? (
-                        <Link href={p.moreinfo}>
-                        <button className="myButton">View More</button>
-                        </Link>
-                    ) : (
-                        <br />
-                    )}
-                </Card.Body>
-              </Card>
+      <Container>
+        <Row className="g-4">
+          {visibleItems.map((p, index) => (
+            <Col md={3} sm={6} key={p.id}>
+              <div className={`dark-card ${animationClass}`} style={{ animationDelay: `${index * 0.1}s` }}>
+                <div className="dark-card-image-wrapper">
+                  <img
+                    src={p.image}
+                    alt={p.name}
+                    className="dark-card-image"
+                  />
+                </div>
+                <div className="dark-card-content">
+                  <h3 className="dark-card-title">
+                    {p.name}
+                  </h3>
+                  <p className="dark-card-description">
+                    {p.description}
+                  </p>
+                  {p.moreinfo && p.moreinfo !== "None" ? (
+                    <Link href={p.moreinfo}>
+                      <button className="dark-card-btn">View More</button>
+                    </Link>
+                  ) : (
+                    <div style={{ height: '44px' }}></div>
+                  )}
+                </div>
+              </div>
             </Col>
           ))}
         </Row>
@@ -113,14 +141,14 @@ export default function ProjectsAndCertificates() {
   };
 
   return (
-    <div style={{ background: "#555659", paddingBottom: "5%" }}>
+    <section className="dark-bg" style={{ paddingTop: "4rem", paddingBottom: "4rem" }}>
+      {/* Projects Section */}
       <div
         className="tag-head"
         style={{
           textAlign: "center",
-          marginBottom: "3%",
+          marginBottom: "3rem",
           color: "white",
-          paddingTop: "3%",
           fontWeight: "300",
         }}
         id="myproject"
@@ -128,26 +156,30 @@ export default function ProjectsAndCertificates() {
         My Projects
       </div>
 
-      {/* แสดง projects */}
-      {projects.length > 0 ? renderCards(projects, true) : (
-        <p style={{ color: "white", textAlign: "center" }}>
-          กำลังโหลด Projects...
-        </p>
-      )}
+      <div ref={projectsRef}>
+        {projects.length > 0 ? renderCards(projects, true, "project-card-animated") : (
+          <div className="loading-skeleton">
+            <div className="skeleton-card"></div>
+            <div className="skeleton-card"></div>
+            <div className="skeleton-card"></div>
+            <div className="skeleton-card"></div>
+          </div>
+        )}
+      </div>
 
-      {/* ✅ ปุ่ม More Info (มี if/else) */}
-      <div style={{ display: "flex", justifyContent: "center", marginTop: "20px" }}>
-        <button className="myButton" onClick={handleShowMore}>
+      <div style={{ display: "flex", justifyContent: "center", marginTop: "2rem" }}>
+        <button className="myButton white-btn" onClick={handleShowMore}>
           {showAll ? "Show Less" : "Show More"}
         </button>
       </div>
 
+      {/* Certificates Section */}
       <div
         className="tag-head"
         style={{
           textAlign: "center",
-          marginTop: "3%",
-          marginBottom: "3%",
+          marginTop: "4rem",
+          marginBottom: "3rem",
           color: "white",
           fontWeight: "300",
         }}
@@ -156,17 +188,23 @@ export default function ProjectsAndCertificates() {
         My Certificates
       </div>
 
-      {certificates.length > 0 ? renderCards(certificates) : (
-        <p style={{ color: "white", textAlign: "center" }}>
-          กำลังโหลด Certificates...
-        </p>
-      )}
+      <div ref={certificatesRef}>
+        {certificates.length > 0 ? renderCards(certificates, false, "certificate-card-animated") : (
+          <div className="loading-skeleton">
+            <div className="skeleton-card"></div>
+            <div className="skeleton-card"></div>
+            <div className="skeleton-card"></div>
+            <div className="skeleton-card"></div>
+          </div>
+        )}
+      </div>
 
-      <div style={{ display: "flex", justifyContent: "center", marginTop: "20px" }}>
+      <div style={{ display: "flex", justifyContent: "center", marginTop: "2rem" }}>
         <Link href="https://drive.google.com/drive/folders/1Ij7AkDBkay4OBKrb76BMiuxsfOJNIo0d?usp=sharing">
-          <button className="myButton">View More</button>
+          <button className="myButton white-btn">View More</button>
         </Link>
       </div>
-    </div>
+    </section>
   );
 }
+

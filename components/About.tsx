@@ -7,7 +7,7 @@ export default function About() {
         <section id="about" className="dark-bg">
             <div
                 className="tag-head"
-                style={{ textAlign: "center", marginBottom: "2%", color: "white" ,fontWeight:'300'}}
+                style={{ textAlign: "center", marginBottom: "5%", color: "white", fontWeight: '300' }}
                 id='about'
             >
                 About Me
@@ -18,11 +18,13 @@ export default function About() {
                         title="Iot and Microcontroller"
                         icon="/images/iot.png"
                         description={
-                            <div>
-                                <img src="/icons/esp32.jpeg" style={{ width: "8%", height: "auto" }}/>
-                                <img src='/icons/arduinoCloud.png' style={{ width: "8%", height: "auto" }}></img>
-                                <img src='/icons/mqtt.png' style={{ width: "8%", height: "auto" }}></img>
+                            <div style={{ display: "flex", gap: "15px", alignItems: "center", flexWrap: "wrap" }}>
+                                <img src="/icons/esp32.jpeg" style={{ width: "8%", height: "auto" }} />
+                                <img src='/icons/arduinoCloud.png' style={{ width: "10%", height: "auto" }}></img>
+                                <img src='/icons/Mqtt-hor.svg.png' style={{ width: "11%", height: "auto" }}></img>
                                 <img src='/icons/arduino.png' style={{ width: "8%", height: "auto" }}></img>
+                                <img src='/icons/PlatformIO_logo.svg.png' style={{ width: "8%", height: "auto" }}></img>
+                                <img src='/icons/image 268@3x.png.avif' style={{ width: "10%", height: "auto" }}></img>
                             </div>
                         }
                         projects={5} />
@@ -31,8 +33,8 @@ export default function About() {
                         icon="/images/robotic-arm.png"
                         description={
                             <div>
-                                <img src="/icons/stm32.png" style={{ width: "8%", height: "auto" ,marginRight:'2%'}}/>
-                                <img src='/icons/ros.png' style={{ width: "10%", height: "auto" }}></img>
+                                <img src="/icons/stm32.png" style={{ width: "8%", height: "auto", marginRight: '2%' }} />
+                                <img src='/icons/ros-logo-png_seeklogo-441814.png' style={{ width: "10%", height: "auto" }}></img>
                                 <img src='/icons/rasp.png' style={{ width: "10%", height: "auto" }}></img>
                             </div>
                         }
@@ -41,9 +43,14 @@ export default function About() {
                         title="AI and Computer Vision"
                         icon="/icons/learning.png"
                         description={
-                            <div>
-                                <img src="/icons/yolo.png" style={{ width: "10%", height: "auto" }}/>
-                                <img src='/icons/opencv.png' style={{ width: "10%", height: "auto" }}></img>
+                            <div style={{ display: "flex", gap: "15px", alignItems: "center", flexWrap: "wrap" }}>
+                                <img src="/icons/yolo.png" style={{ width: "10%", height: "auto" }} />
+                                <img src='/icons/opencv.png' style={{ width: "8%", height: "auto" }} />
+                                <img src='/icons/Python-Emblem.png' style={{ width: "10%", height: "auto" }} />
+                                <img src='/icons/pandas-d7d1sqnks3dbdy0lu80am4.webp' style={{ width: "10%", height: "auto" }} />
+                                <img src='/icons/Google_Colab_pic.png' style={{ width: "10%", height: "auto" }} />
+                                <img src='/icons/logo-1.png' style={{ width: "13%", height: "auto" }} />
+                                <img src='/icons/c16b7180-9d75-11ea-92f2-11c1b3a188b5.png' style={{ width: "12%", height: "auto" }} />
                             </div>
                         }
                         projects={2} />
@@ -52,15 +59,19 @@ export default function About() {
                         icon="/icons/personal-computer.png"
                         description={
                             <div>
-                                <img src="/icons/web.png" style={{ width: "30%", height: "auto" ,marginTop: "-4%"}}/>
-                                <img src="/icons/app.png" style={{ width: "15%", height: "auto" }}/>
-                                <img src='/icons/roblox.png' style={{ width: "10%", height: "auto" }}></img>
+                                <img src="/icons/web.png" style={{ width: "30%", height: "auto", marginTop: "-4%" }} />
+                                <img src="/icons/app.png" style={{ width: "15%", height: "auto" }} />
+                                <img src='/icons/next-js.svg' style={{ width: "8%", height: "auto" }} />
+                                <img src='/icons/postgresql.webp' style={{ width: "10%", height: "auto" }} />
+                                <img src='/icons/mongodb_original_wordmark_logo_icon_146425.png' style={{ width: "10%", height: "auto" }} />
+                                <img src='/icons/roblox.png' style={{ width: "10%", height: "auto" }} />
+
                             </div>
                         }
                         projects={1} />
                 </div>
                 <div className="flex-full about-text">
-                    <img src="https://jwlblqgkhpxztiswqahj.supabase.co/storage/v1/object/public/project-images/Edu.png" alt="wallety" style={{ width: "50%", height: "auto" ,marginLeft:'10%'}} />
+                    <img src="https://jwlblqgkhpxztiswqahj.supabase.co/storage/v1/object/public/project-images/Edu.png" alt="wallety" style={{ width: "50%", height: "auto", marginLeft: '10%' }} />
                 </div>
             </div>
 
@@ -82,16 +93,18 @@ type Props = {
     projects: number
 }
 
-function AboutCard ({title, icon, description, projects} : Props) {
-    return(
-        <div className="light-bg about-card">
+function AboutCard({ title, icon, description, projects }: Props) {
+    return (
+        <div className="about-card">
 
             <div className="flex justify-space">
-                <h3 className="green">{title}</h3>
+                <h3 className="white">{title}</h3>
                 <Image src={icon} width={36} height={36} alt={title} />
             </div>
-            <div className="white">{description}</div>
-            <span className="gray">{projects.toString()} projects</span>
+            <div className="skill-icons-container">
+                {description}
+            </div>
+            <span className="greenloght">{projects.toString()} projects</span>
         </div>
     )
 }
