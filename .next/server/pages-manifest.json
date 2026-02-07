@@ -2,7 +2,7 @@
   "/_app": "pages/_app.js",
   "/_error": "pages/_error.js",
   "/_document": "pages/_document.js",
-  "/api/certificates": "pages/api/certificates.js",
   "/": "pages/index.js",
-  "/api/projects": "pages/api/projects.js"
+  "/api/projects": "pages/api/projects.js",
+  "/api/certificates": "pages/api/certificates.js"
 }

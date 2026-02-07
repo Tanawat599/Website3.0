@@ -57,8 +57,9 @@ export default function Experience({ experiences }: Props) {
                                         <span className="greenloght" style={{ fontSize: "1rem", fontWeight: "500" }}>{exp.role}</span>
                                     </div>
                                 </div>
-                                <span className="gray" style={{ fontSize: "0.9rem", whiteSpace: "nowrap" }}>{exp.period}</span>
+
                             </div>
+                            <span className="gray" style={{ fontSize: "0.9rem", whiteSpace: "nowrap" }}>{exp.period}</span>
                             <p className="white" style={{ lineHeight: "1.6", opacity: 0.9, textAlign: 'justify' }}>{exp.description}</p>
                         </div>
                     ))

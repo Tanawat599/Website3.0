@@ -30,7 +30,7 @@ export default function Header() {
                     }}>Let&#39;s chat!</a>
                 </div>
                 <div className="profile-image-wrapper" style={{ zIndex: 2 }}>
-                    <Image src="/images/image3.png" width={600} height={570} alt="Tanawat Profile" className="profile-image" />
+                    <Image src="/images/_MG_5244-Photoroom.png" width={600} height={700} alt="Tanawat Profile" className="profile-image" />
                 </div>
             </div>
         </header>

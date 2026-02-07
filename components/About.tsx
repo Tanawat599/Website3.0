@@ -59,12 +59,12 @@ export default function About() {
                         icon="/icons/personal-computer.png"
                         description={
                             <div>
-                                <img src="/icons/web.png" style={{ width: "30%", height: "auto", marginTop: "-4%" }} />
-                                <img src="/icons/app.png" style={{ width: "15%", height: "auto" }} />
+                                <img src="/icons/web.png" style={{ width: "27%", height: "auto", marginTop: "-4%" }} />
+                                <img src="/icons/app.png" style={{ width: "13%", height: "auto" }} />
                                 <img src='/icons/next-js.svg' style={{ width: "8%", height: "auto" }} />
                                 <img src='/icons/postgresql.webp' style={{ width: "10%", height: "auto" }} />
                                 <img src='/icons/mongodb_original_wordmark_logo_icon_146425.png' style={{ width: "10%", height: "auto" }} />
-                                <img src='/icons/roblox.png' style={{ width: "10%", height: "auto" }} />
+                                <img src='/icons/roblox.png' style={{ width: "8%", height: "auto" }} />
 
                             </div>
                         }
