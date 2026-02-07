@@ -21,7 +21,7 @@ export default function About() {
                             <div style={{ display: "flex", gap: "15px", alignItems: "center", flexWrap: "wrap" }}>
                                 <img src="/icons/esp32.jpeg" style={{ width: "8%", height: "auto" }} />
                                 <img src='/icons/arduinoCloud.png' style={{ width: "10%", height: "auto" }}></img>
-                                <img src='/icons/Mqtt-hor.svg.png' style={{ width: "11%", height: "auto" }}></img>
+                                <img src="/icons/Mqtt-hor.svg.png" alt="MQTT" style={{ width: "11%", height: "auto", filter: `drop-shadow(0 0 2px white) drop-shadow(0 0 2px white)` }} />
                                 <img src='/icons/arduino.png' style={{ width: "8%", height: "auto" }}></img>
                                 <img src='/icons/PlatformIO_logo.svg.png' style={{ width: "8%", height: "auto" }}></img>
                                 <img src='/icons/image 268@3x.png.avif' style={{ width: "10%", height: "auto" }}></img>
@@ -35,7 +35,7 @@ export default function About() {
                             <div>
                                 <img src="/icons/stm32.png" style={{ width: "8%", height: "auto", marginRight: '2%' }} />
                                 <img src='/icons/ros-logo-png_seeklogo-441814.png' style={{ width: "10%", height: "auto" }}></img>
-                                <img src='/icons/rasp.png' style={{ width: "10%", height: "auto" }}></img>
+                                <img src="/icons/rasp.png" alt="MQTT" style={{ width: "11%", height: "auto", filter: `drop-shadow(0 0 2px white) drop-shadow(0 0 2px white)` }} />
                             </div>
                         }
                         projects={2} />
@@ -47,7 +47,7 @@ export default function About() {
                                 <img src="/icons/yolo.png" style={{ width: "10%", height: "auto" }} />
                                 <img src='/icons/opencv.png' style={{ width: "8%", height: "auto" }} />
                                 <img src='/icons/Python-Emblem.png' style={{ width: "10%", height: "auto" }} />
-                                <img src='/icons/pandas-d7d1sqnks3dbdy0lu80am4.webp' style={{ width: "10%", height: "auto" }} />
+                                <img src="/icons/pandas-d7d1sqnks3dbdy0lu80am4.webp" alt="MQTT" style={{ width: "11%", height: "auto", filter: `drop-shadow(0 0 2px white) drop-shadow(0 0 2px white)` }} />
                                 <img src='/icons/Google_Colab_pic.png' style={{ width: "10%", height: "auto" }} />
                                 <img src='/icons/logo-1.png' style={{ width: "13%", height: "auto" }} />
                                 <img src='/icons/c16b7180-9d75-11ea-92f2-11c1b3a188b5.png' style={{ width: "12%", height: "auto" }} />

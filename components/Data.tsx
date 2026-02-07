@@ -78,7 +78,7 @@ export default function ProjectsAndCertificates() {
       const data = await res.json();
       setProjects(data);
     } catch (error) {
-      console.error("❌ Error fetching projects:", error);
+      console.error("Error fetching projects:", error);
     }
   }
 
@@ -90,7 +90,7 @@ export default function ProjectsAndCertificates() {
       const data = await res.json();
       setCertificates(data);
     } catch (error) {
-      console.error("❌ Error fetching certificates:", error);
+      console.error("Error fetching certificates:", error);
     }
   }
 

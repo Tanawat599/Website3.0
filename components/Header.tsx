@@ -12,7 +12,7 @@ export default function Header() {
         <header >
             <NavBar />
             <div className="header flex dark-bg header-gradient" style={{ paddingTop: '4rem', position: 'relative' }}>
-                <div style={{ zIndex: 2, maxWidth: '600px' }}>
+                <div style={{ zIndex: 2, maxWidth: '700px' }}>
                     <div className="tag-head" style={{ fontWeight: '300', marginBottom: '1rem' }}>Tanawat Chuthaphiromporn</div>
                     <h1 className="greenloght" style={{ fontWeight: '300', fontSize: '3.5rem', marginBottom: '1.5rem' }}>Computer Engineer</h1>
                     <p style={{ fontSize: "1.1rem", fontWeight: "300", lineHeight: "1.8", marginBottom: "2rem" }} className="white">
@@ -30,7 +30,7 @@ export default function Header() {
                     }}>Let&#39;s chat!</a>
                 </div>
                 <div className="profile-image-wrapper" style={{ zIndex: 2 }}>
-                    <Image src="/images/_MG_5244-Photoroom.png" width={600} height={700} alt="Tanawat Profile" className="profile-image" />
+                    <Image src="/images/_MG_5244-Photoroom.png" width={600} height={740} alt="Tanawat Profile" className="profile-image" />
                 </div>
             </div>
         </header>
