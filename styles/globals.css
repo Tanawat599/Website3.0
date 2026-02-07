@@ -101,8 +101,9 @@ nav ul li {
 }
 
 .header {
-  justify-content: space-between;
-  padding: 1.1rem 5rem 0rem 5rem;
+  justify-content: center;
+  gap: 2rem;
+  padding: 1.1rem 3rem 0rem 3rem;
 }
 
 .header h1 {
