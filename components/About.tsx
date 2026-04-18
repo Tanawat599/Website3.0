@@ -2,6 +2,29 @@ import React from "react";
 import Image, { StaticImageData } from "next/image";
 
 export default function About() {
+    const education: EducationEntry[] = [
+        {
+            institution: 'โรงเรียนไผทอุดมศึกษา',
+            program: 'ระดับอนุบาลและประถมศึกษา',
+            gpa: '3.65',
+            logo: '/images/patai.png',
+            period: ''
+        },
+        {
+            institution: 'โรงเรียนสายปัญญารังสิต',
+            program: 'ระดับมัธยมศึกษา ห้องเรียน Gifted-SMT',
+            gpa: '3.83',
+            logo: '/images/saipanyar.png',
+            period: ''
+        },
+        {
+            institution: 'มหาวิทยาลัยเกษตรศาสตร์',
+            program: 'คณะวิศวกรรมศาสตร์ สาขาวิศวกรรมคอมพิวเตอร์',
+            gpa: '',
+            logo: '/images/KU_SubLogo.png',
+            period: ''
+        }
+    ];
 
     return (
         <section id="about" className="dark-bg">
@@ -12,8 +35,8 @@ export default function About() {
             >
                 About Me
             </div>
-            <div className="flex">
-                <div className="flex-full">
+            <div className="flex about-container">
+                <div className="about-cards-section">
                     <AboutCard
                         title="Iot and Microcontroller"
                         icon="/images/iot.png"
@@ -70,8 +93,10 @@ export default function About() {
                         }
                         projects={1} />
                 </div>
-                <div className="flex-full about-text">
-                    <img src="https://jwlblqgkhpxztiswqahj.supabase.co/storage/v1/object/public/project-images/Edu.png" alt="wallety" style={{ width: "50%", height: "auto", marginLeft: '10%' }} />
+                <div className="education-section">
+                    <div className="timeline-wrapper">
+                        <EducationTimeline entries={education} />
+                    </div>
                 </div>
             </div>
 
@@ -105,6 +130,40 @@ function AboutCard({ title, icon, description, projects }: Props) {
                 {description}
             </div>
             <span className="greenloght">{projects.toString()} projects</span>
+        </div>
+    )
+}
+
+type EducationEntry = {
+    institution: string;
+    program: string;
+    gpa: string;
+    logo: string;
+    period: string;
+}
+
+function EducationTimeline({ entries }: { entries: EducationEntry[] }) {
+    return (
+        <div className="education-timeline">
+            {entries.map((e, idx) => (
+                <div key={idx}>
+                    <div >
+                        <div className="logo">
+                            <img src={e.logo} alt={e.institution} />
+                        </div>
+                        <div className="content">
+                            <div className="level gray">{e.program}</div>
+                            <h4 className="white">{e.institution}</h4>
+                            {e.gpa && <div className="gpa white">เกรดเฉลี่ย {e.gpa}</div>}
+                        </div>
+                    </div>
+                    {idx < entries.length - 1 && (
+                        <div className="timeline-arrow-wrapper">
+                            <img src="/images/arrow.png" className="timeline-arrow" alt="arrow" />
+                        </div>
+                    )}
+                </div>
+            ))}
         </div>
     )
 }
